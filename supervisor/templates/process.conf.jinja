@@ -1,0 +1,14 @@
+; This file is managed by Salt. Do not edit.
+; Source: {{source}}
+
+[program:{{ name }}]
+command={{ command }}
+autostart=true
+autorestart=unexpected
+startsecs=1
+startretries=3
+exitcodes=0,2
+stopsignal=TERM
+stopwaitsecs=10
+user={{ user }}
+redirect_stderr=false
