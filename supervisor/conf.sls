@@ -3,14 +3,14 @@
 # Deal with the processes
 {%- set processes = salt['pillar.get']('supervisor:processes', {}) %}
 {%- if processes %}
-{%- for id, process_data in processes.iteritems() %}
+{%- for id, process_data in processes.items() %}
 supervisor_job_{{ id }}:
   file.managed:
     - name: /etc/supervisor/conf.d/{{ id }}.conf
     - source: salt://supervisor/templates/process.conf.jinja
     - template: jinja
     - id: {{ id }}
-    - config: {{ process_data }}
+    - context: {{ process_data }}
     - watch_in:
       - service: supervisor
     - require:
