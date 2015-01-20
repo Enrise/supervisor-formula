@@ -10,5 +10,7 @@ supervisor_job_{{ id }}:
     - template: jinja
     - id: {{ id }}
     - config: {{ data }}
+    - watch_in:
+      - service: supervisor
 {%- endfor %}
 {%- endif %}
