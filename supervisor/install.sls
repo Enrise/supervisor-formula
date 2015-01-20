@@ -1,3 +1,3 @@
 # Install Supervisor
 supervisor:
-  pkg.installed: {}
+  pkg.installed
