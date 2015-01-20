@@ -1,7 +1,7 @@
 # Deal with the config
 
 # Deal with the processes
-{%- set processes = salt['pillar.items']('supervisor:processes', {}) %}
+{%- set processes = salt['pillar.get']('supervisor:processes', {}) %}
 {%- if processes %}
 {%- for id, data in processes.iteritems() %}
 supervisor_job_{{ id }}:
