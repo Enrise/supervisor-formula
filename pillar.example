@@ -1,8 +1,8 @@
 supervisor:
   processes:
     my-cool-process:
-      command: 'php /var/www/cron.php'
+      command: 'ps aux > /tmp/procs'
       user: www-data
     some-other-process:
-      command: 'python /opt/runme/test.py'
-      user: backup
+      command: 'uptime > /tmp/uptime'
+      user: root
