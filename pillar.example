@@ -5,4 +5,4 @@ supervisor:
       user: www-data
     some-other-process:
       command: 'python /opt/runme/test.py'
-      user: frank
+      user: backup
