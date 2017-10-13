@@ -11,6 +11,16 @@ supervisor_job_{{ id }}:
     - template: jinja
     - id: {{ id }}
     - context: {{ process_data }}
+    - defaults:
+        autostart: "true"
+        autorestart: "unexpected"
+        startsecs: 1
+        startretries: 3
+        exitcodes: "0,2"
+        stopsignal: "TERM"
+        stopwaitsecs: 10
+        redirect_stderr: "false"
+        numprocs: 1
     - watch_in:
       - service: supervisor
     - require:
