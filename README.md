@@ -1,5 +1,7 @@
 # supervisor-formula
 
+[![Travis branch](https://img.shields.io/travis/Enrise/supervisor-formula/master.svg?style=flat-square)](https://travis-ci.org/Enrise/supervisor-formula)
+
 This formula will install Supervisor
 
 ## Compatibility
