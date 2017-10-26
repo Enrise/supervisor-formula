@@ -4,6 +4,12 @@
 {%- set processes = salt['pillar.get']('supervisor:processes', {}) %}
 {%- if processes %}
 {%- for id, process_data in processes.items() %}
+
+{% set process_name = "%(program_name)s" %}
+{% if process_data.numprocs is defined and process_data.numprocs > 1 %}
+{% set process_name = "%(program_name)s_%(process_num)02d" %}
+{% endif %}
+
 supervisor_job_{{ id }}:
   file.managed:
     - name: /etc/supervisor/conf.d/{{ id }}.conf
@@ -21,6 +27,7 @@ supervisor_job_{{ id }}:
         stopwaitsecs: 10
         redirect_stderr: "false"
         numprocs: 1
+        process_name: "{{ process_name }}"
     - watch_in:
       - service: supervisor
     - require:
